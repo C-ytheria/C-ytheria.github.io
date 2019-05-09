@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <title>
+      
+        记人生中第一次getshell |
+          
+            cytheria
+    </title>
+    <!-- 主css -->
+    <link rel="stylesheet" href="/sass/main.css">
+      <!-- seo -->
+      <meta name="description" content="作为一个菜鸡脚本少女👩🏻，第一次拿shell，激动得手抖，走路都是跳着走的🕺🏻🥳…虽然很简单，但是还是决定记录一下，毕竟第一次成功。  上周的时候发现了一个注入，域名为：http://www.xxx.com/注入点：http://www.xxx.com/abc.php?a=1&amp;amp;b=2，参数为apayload如下：  由于是时间盲注，sqlmap跑起来特别慢，所以放着一直没管它，然">
+<meta name="keywords" content="web安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记人生中第一次getshell">
+<meta property="og:url" content="https://cytheria.me/2019/05/09/记人生中第一次getshell/index.html">
+<meta property="og:site_name" content="cytheria">
+<meta property="og:description" content="作为一个菜鸡脚本少女👩🏻，第一次拿shell，激动得手抖，走路都是跳着走的🕺🏻🥳…虽然很简单，但是还是决定记录一下，毕竟第一次成功。  上周的时候发现了一个注入，域名为：http://www.xxx.com/注入点：http://www.xxx.com/abc.php?a=1&amp;amp;b=2，参数为apayload如下：  由于是时间盲注，sqlmap跑起来特别慢，所以放着一直没管它，然">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://cytheria.me/images/getshell_ticker001.jpeg">
+<meta property="og:image" content="https://images/getshell001.png">
+<meta property="og:image" content="https://cytheria.me/images/geshell002.png">
+<meta property="og:image" content="https://cytheria.me/source/images/getshell003.png">
+<meta property="og:image" content="https://cytheria.me/images/getshell004.png">
+<meta property="og:image" content="https://cytheria.me/images/getshell005.png">
+<meta property="og:image" content="https://cytheria.me/images/getshell006.png">
+<meta property="og:image" content="https://cytheria.me/images/getshell007.png">
+<meta property="og:image" content="https://cytheria.me/images/getshell008.png">
+<meta property="og:image" content="https://cytheria.me/images/getshell009.png">
+<meta property="og:updated_time" content="2019-05-09T14:37:16.668Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="记人生中第一次getshell">
+<meta name="twitter:description" content="作为一个菜鸡脚本少女👩🏻，第一次拿shell，激动得手抖，走路都是跳着走的🕺🏻🥳…虽然很简单，但是还是决定记录一下，毕竟第一次成功。  上周的时候发现了一个注入，域名为：http://www.xxx.com/注入点：http://www.xxx.com/abc.php?a=1&amp;amp;b=2，参数为apayload如下：  由于是时间盲注，sqlmap跑起来特别慢，所以放着一直没管它，然">
+<meta name="twitter:image" content="https://cytheria.me/images/getshell_ticker001.jpeg">
+        <!-- facicon -->
+        
+          <link rel="icon" href="http://7xp1k3.com1.z0.glb.clouddn.com/octocat-de-los-muertos.jpg">
+          
+            <!-- 统计 -->
+            
+                
+                    <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+</head></html>
+	<body>
+		<div class="main">
+			<div id="mobile-bar">
+    <a class="menu-button"></a>
+    <a class="logo" href="/">cytheria</a>
+</div>
+<header class="nav-header">
+    <a href="/" class="logo-link">cytheria</a>
+    
+            
+    <ul class="nav nav-list">
+        <li class="nav-list-item"><a href="/">Home</a></li>
+        
+            
+        
+            
+        <li class="nav-list-item"><a href="/about">About</a></li>
+            
+        
+            
+        <li class="nav-list-item"><a href="/tags">Tags</a></li>
+            
+        
+            
+        <li class="nav-list-item"><a href="/archives">Archives</a></li>
+            
+        
+    </ul>
+</header>
+<div class="sidebar">
+    
+            
+    <ul class="main-menu">
+        <li class="main-menu-item"><a href="/">Home</a></li>
+        
+            
+        
+            
+        <li class="main-menu-item"><a href="/about">About</a></li>
+            
+        
+            
+        <li class="main-menu-item"><a href="/tags">Tags</a></li>
+            
+        
+            
+        <li class="main-menu-item"><a href="/archives">Archives</a></li>
+            
+        
+    </ul>
+</div>
+
+<h1 class="blog-title">The cytheria Blog</h1>
+
+			
+<article class="article-main" itemscope itemprop="blogPost">
+        <div class="articleCon">
+            <header class="article-header">
+                <h1 itemprop="name">
+                    <a href="/2019/05/09/记人生中第一次getshell/" class="article-title">记人生中第一次getshell</a>
+                </h1>
+            </header>
+            
+<div class="bookmark" id="bookmark">
+    
+</div>
+
+            
+            <div class="article-meta">
+                <div class="article-dateTime">
+    <a href="/2019/05/09/记人生中第一次getshell/" class="article-date">
+        <time datetime="May 9th 2019" itemprop="datePublished">
+            May 9th 2019
+        </time>
+    </a>
+</div>
+
+            </div>
+            <div class="article-inner">
+                <div class="article-entry" itemprop="articleBody">
+                    <p>作为一个菜鸡脚本少女👩🏻，第一次拿shell，激动得手抖，走路都是跳着走的🕺🏻🥳…虽然很简单，但是还是决定记录一下，毕竟第一次成功。</p>
+<p><img src="/images/getshell_ticker001.jpeg" alt="getshell_ticker001"></p>
+<p>上周的时候发现了一个注入，域名为：<a href="http://www.xxx.com/" target="_blank" rel="noopener">http://www.xxx.com/</a><br>注入点：<a href="http://www.xxx.com/abc.php?a=1&amp;b=2，参数为a" target="_blank" rel="noopener">http://www.xxx.com/abc.php?a=1&amp;b=2，参数为a</a><br>payload如下：</p>
+<p><img src="//images/getshell001.png" alt="getshell001"></p>
+<p>由于是时间盲注，sqlmap跑起来特别慢，所以放着一直没管它，然后就在昨天，我突然想起来看看它是不是dba权限，于是</p>
+<p><img src="/images/geshell002.png" alt="geshell002"></p>
+<p>运气真好哈哈哈哈😎，于是开始执行–os-shell（还好是windows，如果是linux我可能会哭）</p>
+<p><img src="/source/images/getshell003.png" alt="getshell003"></p>
+<p>准备写一句话的时候，发现我并不知道网站的路径，然后回到网页上</p>
+<p><img src="/images/getshell004.png" alt="getshell004"></p>
+<p>然后就这个样子爆出了路径<a href="http://www.xxx.com/abc.php" target="_blank" rel="noopener">http://www.xxx.com/abc.php</a><br>接下来就可以写一句话啦~<br>（这里的&lt;&gt;需要转义一下才能写进去，我一开始没转义，写失败了）</p>
+<p><img src="/images/getshell005.png" alt="getshell005"></p>
+<p>测试一下</p>
+<p><img src="/images/getshell006.png" alt="getshell006"></p>
+<p>然后用菜刀连接</p>
+<p><img src="/images/getshell007.png" alt="getshell007"></p>
+<p>administator权限<br>还在别人D盘里发现了另一个站</p>
+<p><img src="/images/getshell008.png" alt="getshell008"></p>
+<p><img src="/images/getshell009.png" alt="getshell009"></p>
+<p>（后面的截图不太方便，就酱叭）<br>感觉接下来可以开始学习内网渗透了，Yeah~😌</p>
+
+                </div>
+                
+<nav id="article-nav">
+  
+  
+    <a href="/2019/03/17/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"> < Hello World</div>
+    </a>
+  
+</nav>
+
+
+            </div>
+        </div>
+        
+        
+</article>
+
+
+
+		</div>
+		<div id="heart"></div>
+
+    <footer class="blog-footer" id="blog-footer">
+        <div id="footer-info" class="inner">
+            Power ♥ by <a href="https://github.com/yzzting/hexo-theme-MyFairLady" target="_blank">MyFairLady</a>
+        </div>
+    </footer>
+    <script src="/js/sidebar.js"></script>
+    <script src="/js/toTop.js"></script>
+    <script src="/js/bookmark.js"></script>
+		<script type="text/javascript" color="248,58,117" count="180" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+	</body>
+	</html>
