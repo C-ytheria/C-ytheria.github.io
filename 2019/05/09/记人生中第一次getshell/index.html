@@ -14,13 +14,13 @@
     <!-- 主css -->
     <link rel="stylesheet" href="/sass/main.css">
       <!-- seo -->
-      <meta name="description" content="作为一个菜鸡脚本少女👩🏻，第一次拿shell，激动得手抖，走路都是跳着走的🕺🏻🥳…虽然很简单，但是还是决定记录一下，毕竟第一次成功。 上周的时候发现了一个注入，假设域名为：http://www.aaa.com/注入点：http://www.aaa.com/abc.php?a=1&amp;amp;b=2，参数为apayload如下：  由于是时间盲注，sqlmap跑起来特别慢，所以放着一直没管它，">
+      <meta name="description" content="作为一个菜鸡脚本少女👩🏻，第一次拿shell，激动得手抖，走路都是跳着走的🕺🏻🥳…虽然很简单，但是还是决定记录一下，毕竟第一次成功。   0x00 发现注入上周的时候发现了一个注入，假设域名为：http://www.aaa.com/ 注入点：http://www.aaa.com/abc.php?a=1&amp;amp;b=2，参数为apayload如下：   0x01 找到网站路径由于是时间盲注">
 <meta name="keywords" content="web安全">
 <meta property="og:type" content="article">
 <meta property="og:title" content="记人生中第一次getshell">
 <meta property="og:url" content="https://cytheria.me/2019/05/09/记人生中第一次getshell/index.html">
 <meta property="og:site_name" content="cytheria">
-<meta property="og:description" content="作为一个菜鸡脚本少女👩🏻，第一次拿shell，激动得手抖，走路都是跳着走的🕺🏻🥳…虽然很简单，但是还是决定记录一下，毕竟第一次成功。 上周的时候发现了一个注入，假设域名为：http://www.aaa.com/注入点：http://www.aaa.com/abc.php?a=1&amp;amp;b=2，参数为apayload如下：  由于是时间盲注，sqlmap跑起来特别慢，所以放着一直没管它，">
+<meta property="og:description" content="作为一个菜鸡脚本少女👩🏻，第一次拿shell，激动得手抖，走路都是跳着走的🕺🏻🥳…虽然很简单，但是还是决定记录一下，毕竟第一次成功。   0x00 发现注入上周的时候发现了一个注入，假设域名为：http://www.aaa.com/ 注入点：http://www.aaa.com/abc.php?a=1&amp;amp;b=2，参数为apayload如下：   0x01 找到网站路径由于是时间盲注">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://cytheria.me/images/getshell_ticker001.jpeg">
 <meta property="og:image" content="https://cytheria.me/images/getshell001.png">
@@ -32,10 +32,10 @@
 <meta property="og:image" content="https://cytheria.me/images/getshell007.png">
 <meta property="og:image" content="https://cytheria.me/images/getshell008.png">
 <meta property="og:image" content="https://cytheria.me/images/getshell009.png">
-<meta property="og:updated_time" content="2019-05-10T01:25:57.536Z">
+<meta property="og:updated_time" content="2019-05-10T04:44:53.650Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记人生中第一次getshell">
-<meta name="twitter:description" content="作为一个菜鸡脚本少女👩🏻，第一次拿shell，激动得手抖，走路都是跳着走的🕺🏻🥳…虽然很简单，但是还是决定记录一下，毕竟第一次成功。 上周的时候发现了一个注入，假设域名为：http://www.aaa.com/注入点：http://www.aaa.com/abc.php?a=1&amp;amp;b=2，参数为apayload如下：  由于是时间盲注，sqlmap跑起来特别慢，所以放着一直没管它，">
+<meta name="twitter:description" content="作为一个菜鸡脚本少女👩🏻，第一次拿shell，激动得手抖，走路都是跳着走的🕺🏻🥳…虽然很简单，但是还是决定记录一下，毕竟第一次成功。   0x00 发现注入上周的时候发现了一个注入，假设域名为：http://www.aaa.com/ 注入点：http://www.aaa.com/abc.php?a=1&amp;amp;b=2，参数为apayload如下：   0x01 找到网站路径由于是时间盲注">
 <meta name="twitter:image" content="https://cytheria.me/images/getshell_ticker001.jpeg">
         <!-- facicon -->
         
@@ -110,7 +110,7 @@
             </header>
             
 <div class="bookmark" id="bookmark">
-    
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x00-发现注入"><span class="toc-text">0x00 发现注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x01-找到网站路径"><span class="toc-text">0x01 找到网站路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x03然后用菜刀连接"><span class="toc-text">0x03然后用菜刀连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x04-发现administator权限"><span class="toc-text">0x04 发现administator权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x05-发现内网IP"><span class="toc-text">0x05 发现内网IP</span></a></li></ol>
 </div>
 
             
@@ -127,27 +127,30 @@
             <div class="article-inner">
                 <div class="article-entry" itemprop="articleBody">
                     <p>作为一个菜鸡脚本少女👩🏻，第一次拿shell，激动得手抖，走路都是跳着走的🕺🏻🥳…虽然很简单，但是还是决定记录一下，毕竟第一次成功。</p>
-<center><br><img src="/images/getshell_ticker001.jpeg" alt="getshell_ticker001"><br></center><br>上周的时候发现了一个注入，假设域名为：<a href="http://www.aaa.com/" target="_blank" rel="noopener">http://www.aaa.com/</a><br>注入点：<a href="http://www.aaa.com/abc.php?a=1&amp;b=2，参数为a" target="_blank" rel="noopener">http://www.aaa.com/abc.php?a=1&amp;b=2，参数为a</a><br>payload如下：<br><br><center><br><img src="/images/getshell001.png" alt="getshell001"><br></center>
+<center><br><img src="/images/getshell_ticker001.jpeg" alt="getshell_ticker001"><br></center>
 
-<p>由于是时间盲注，sqlmap跑起来特别慢，所以放着一直没管它，然后就在昨天，我突然想起来看看它是不是dba权限，于是</p>
+<h3 id="0x00-发现注入"><a href="#0x00-发现注入" class="headerlink" title="0x00 发现注入"></a>0x00 发现注入</h3><p>上周的时候发现了一个注入，假设域名为：<a href="http://www.aaa.com/" target="_blank" rel="noopener">http://www.aaa.com/</a></p>
+<p>注入点：<a href="http://www.aaa.com/abc.php?a=1&amp;b=2，参数为a" target="_blank" rel="noopener">http://www.aaa.com/abc.php?a=1&amp;b=2，参数为a</a><br>payload如下：</p>
+<center><br><img src="/images/getshell001.png" alt="getshell001"><br></center>
+
+<h3 id="0x01-找到网站路径"><a href="#0x01-找到网站路径" class="headerlink" title="0x01 找到网站路径"></a>0x01 找到网站路径</h3><p>由于是时间盲注，sqlmap跑起来特别慢，所以放着一直没管它，然后就在昨天，我突然想起来看看它是不是dba权限，于是</p>
 <center><br><img src="/images/geshell002.png" alt="geshell002"><br></center>
 
 <p>运气真好哈哈哈哈😎，接着开始执行–os-shell（还好是windows，如果是linux我可能会哭）</p>
 <center><br><img src="/images/getshell003.png" alt="getshell003"><br></center>
 
 <p>准备写一句话的时候，发现我并不知道网站的路径，然后回到网页上</p>
-<center><br><img src="/images/getshell004.png" alt="getshell004"><br></center><br>然后就这个样子爆出了路径<a href="http://www.aaa.com/abc.php" target="_blank" rel="noopener">http://www.aaa.com/abc.php</a><br>接下来就可以写一句话啦~<br>（这里的&lt;&gt;需要转义一下才能写进去，我一开始没转义，写失败了）<br><br><center><br><img src="/images/getshell005.png" alt="getshell005"><br></center>
+<center><br><img src="/images/getshell004.png" alt="getshell004"><br></center><br>然后就这个样子爆出了路径<a href="http://www.aaa.com/abc.php" target="_blank" rel="noopener">http://www.aaa.com/abc.php</a><br><br><br>### 0x02接下来就可以写一句话啦~<br>（这里的&lt;&gt;需要转义一下才能写进去，我一开始没转义，写失败了）<br><br><center><br><img src="/images/getshell005.png" alt="getshell005"><br></center>
 
 <p>测试一下</p>
 <center><br><img src="/images/getshell006.png" alt="getshell006"><br></center>
 
-<p>然后用菜刀连接</p>
-<center><br><img src="/images/getshell007.png" alt="getshell007"><br></center>
+<h3 id="0x03然后用菜刀连接"><a href="#0x03然后用菜刀连接" class="headerlink" title="0x03然后用菜刀连接"></a>0x03然后用菜刀连接</h3><center><br><img src="/images/getshell007.png" alt="getshell007"><br></center>
 
-<p>administator权限<br>还在别人D盘里发现了另一个站</p>
+<h3 id="0x04-发现administator权限"><a href="#0x04-发现administator权限" class="headerlink" title="0x04 发现administator权限"></a>0x04 发现administator权限</h3><p>还在别人D盘里发现了另一个站</p>
 <center><br><img src="/images/getshell008.png" alt="getshell008"><br></center>
 
-<center><br><img src="/images/getshell009.png" alt="getshell009"><br></center>
+<h3 id="0x05-发现内网IP"><a href="#0x05-发现内网IP" class="headerlink" title="0x05 发现内网IP"></a>0x05 发现内网IP</h3><center><br><img src="/images/getshell009.png" alt="getshell009"><br></center>
 
 <p>（后面的截图不太方便，就酱叭）<br>感觉接下来可以开始学习内网渗透了，Yeah~😌</p>
 
